@@ -1,9 +1,22 @@
+
+
 function hasTargetSum(array, target) {
   // Write your algorithm here
+    const seenNumbers = {};
+
+  for (const number of array) {
+    const complement = target - number;
+    if (complement in seenNumbers) return true;
+    seenNumbers[number] = true;
+  }
+
+  return false;
 }
 
 /* 
   Write the Big O time complexity of your function here
+  Runtime: O(n^2)
+  Space: O(n)
 */
 
 /* 
@@ -12,6 +25,10 @@ function hasTargetSum(array, target) {
 
 /*
   Add written explanation of your solution here
+  first create an empty object to store the numbers that have already been looped through to avoid using 2 for loops
+  then create a for loop that iterates through the array then minus that value from the target then introdude in an 
+  if statement to compare if the value we get from after subtracting from the target compares to the object of numbers we had
+  looped through in order to avoid using a second for loop
 */
 
 // You can run `node index.js` to view these console logs
